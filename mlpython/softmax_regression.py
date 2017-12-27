@@ -22,7 +22,7 @@ def forward_pass(X, W, b):
     return y
 
 def softmax(x):
-    """Compute softmax values for each sets of scores in x."""
+    #IMPLEMENT A STABLE VERSION OF SOFTMAX FOR AVOIDING OVERFLOW ERRORS
     return np.exp(x)/np.repeat(np.expand_dims(np.sum(np.exp(x), axis=1), axis=1), np.shape(x)[1], axis=1)
 
 def relu(x):
@@ -49,14 +49,14 @@ def softmax_regression(X_train, Y_train, X_test, Y_test):
     Y_test = make_one_hot(Y_test, num_classes)
 
     learning_rate = 0.001
-    for t in range(100):
+    for t in range(1):
 
         Y_train_pred = forward_pass(X_train, W, b)
         cost = compute_cost(Y_train, Y_train_pred)
         print(t, cost)
 
         # Backprop to compute gradients of w1 and w2 with respect to loss
-
+        #IMPLEMENT BACKPROP
 
 
 if __name__ == '__main__':
